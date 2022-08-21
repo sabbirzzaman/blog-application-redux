@@ -1,5 +1,6 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
+import BlogFilter from './BlogFilter';
 import BlogItem from './BlogItem';
 import BlogTitle from './BlogTitle';
 
@@ -13,12 +14,15 @@ const BlogList = () => {
             </div>
 
             <div className="relative max-w-7xl mx-auto">
-                <BlogTitle />
+                <div className='grid grid-cols-2'>
+                    <BlogTitle />
+                    <BlogFilter />
+                </div>
 
                 <div className="mt-12 max-w-lg mx-auto grid gap-5 lg:grid-cols-3 lg:max-w-none">
-                    {
-                        blogs.map(blog => <BlogItem key={blog.id} blog={blog} />)
-                    }
+                    {blogs.map((blog) => (
+                        <BlogItem key={blog.id} blog={blog} />
+                    ))}
                 </div>
             </div>
         </section>
