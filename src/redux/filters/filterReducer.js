@@ -40,7 +40,7 @@ const filtersReducer = (state = initialState, action) => {
             return {
                 ...state,
                 authorFilter: '',
-                categoryFilter: [],
+                categoryFilter: '',
             };
         default:
             return state;
