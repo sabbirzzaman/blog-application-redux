@@ -1,4 +1,4 @@
-import { AUTHOR_FILTER, CATEGORY_FILTER, RESET_FILTER } from './actionTypes';
+import { AUTHOR_FILTER, CATEGORY_FILTER, DELETE_FILTER_A, DELETE_FILTER_C, RESET_FILTER } from './actionTypes';
 import { initialState } from './initialState';
 
 const filtersReducer = (state = initialState, action) => {
@@ -23,6 +23,18 @@ const filtersReducer = (state = initialState, action) => {
                 return state;
             }
         }
+
+        case DELETE_FILTER_A:
+            return {
+                ...state,
+                authorFilter: '',
+            };
+
+        case DELETE_FILTER_C:
+            return {
+                ...state,
+                categoryFilter: [].filter(item => item !== action.payload),
+            };
 
         case RESET_FILTER:
             return {

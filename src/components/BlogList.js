@@ -2,6 +2,7 @@ import React from 'react';
 import { useSelector } from 'react-redux';
 import BlogFilter from './BlogFilter';
 import BlogItem from './BlogItem';
+import BlogPostForm from './BlogPostForm';
 import BlogTitle from './BlogTitle';
 
 const BlogList = () => {
@@ -24,9 +25,29 @@ const BlogList = () => {
                 </div>
 
                 <div className="mt-12 max-w-lg mx-auto grid gap-5 lg:grid-cols-3 lg:max-w-none">
-                    {blogs.filter(blog => author ? blog.authorName === author : blog).filter(blog => categories.length ? categories.includes(blog.category) : blog).map((blog) => (
-                        <BlogItem key={blog.id} blog={blog} />
-                    ))}
+                    {blogs
+                        .filter((blog) =>
+                            author
+                                ? blog.authorName.toLowerCase() ===
+                                  author.toLowerCase()
+                                : blog
+                        )
+                        .filter((blog) =>
+                            categories.length
+                                ? categories
+                                      .map((category) => {
+                                          return category.toLowerCase();
+                                      })
+                                      .includes(blog.category.toLowerCase())
+                                : blog
+                        )
+                        .map((blog) => (
+                            <BlogItem key={blog.id} blog={blog} />
+                        ))}
+
+                    <div className="flex items-center h-[488px] justify-center rounded-lg border-dashed border-blue-500 border-2">
+                        <BlogPostForm />
+                    </div>
                 </div>
             </div>
         </section>
