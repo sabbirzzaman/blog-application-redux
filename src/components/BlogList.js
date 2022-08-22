@@ -11,6 +11,29 @@ const BlogList = () => {
 
     const author = filters.authorFilter;
     const categories = filters.categoryFilter;
+    const searchKey = filters.searchKey;
+
+    const searchFilter = (blog) => {
+        return searchKey
+            ? blog.title.toLowerCase().includes(searchKey.toLowerCase())
+            : blog;
+    };
+
+    const authorFilter = (blog) => {
+        return author
+            ? blog.authorName.toLowerCase() === author.toLowerCase()
+            : blog;
+    };
+
+    const categoryFilter = (blog) => {
+        return categories.length
+            ? categories
+                  .map((category) => {
+                      return category.toLowerCase();
+                  })
+                  .includes(blog.category.toLowerCase())
+            : blog;
+    };
 
     return (
         <section className="relative bg-gray-50 pt-8 pb-20 px-4 sm:px-6 lg:pt-16 lg:pb-16 lg:px-8">
@@ -26,21 +49,9 @@ const BlogList = () => {
 
                 <div className="mt-12 max-w-lg mx-auto grid gap-5 lg:grid-cols-3 lg:max-w-none">
                     {blogs
-                        .filter((blog) =>
-                            author
-                                ? blog.authorName.toLowerCase() ===
-                                  author.toLowerCase()
-                                : blog
-                        )
-                        .filter((blog) =>
-                            categories.length
-                                ? categories
-                                      .map((category) => {
-                                          return category.toLowerCase();
-                                      })
-                                      .includes(blog.category.toLowerCase())
-                                : blog
-                        )
+                        .filter(searchFilter)
+                        .filter(authorFilter)
+                        .filter(categoryFilter)
                         .map((blog) => (
                             <BlogItem key={blog.id} blog={blog} />
                         ))}

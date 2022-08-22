@@ -1,8 +1,15 @@
-import { AUTHOR_FILTER, CATEGORY_FILTER, DELETE_FILTER_A, DELETE_FILTER_C, RESET_FILTER } from './actionTypes';
+import { AUTHOR_FILTER, CATEGORY_FILTER, DELETE_FILTER_A, DELETE_FILTER_C, RESET_FILTER, SEARCH } from './actionTypes';
 import { initialState } from './initialState';
 
 const filtersReducer = (state = initialState, action) => {
     switch (action.type) {
+        case SEARCH: {
+            return {
+                ...state,
+                searchKey: action.payload,
+            };
+        }
+
         case AUTHOR_FILTER: {
             return {
                 ...state,

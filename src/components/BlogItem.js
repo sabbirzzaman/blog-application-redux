@@ -3,7 +3,6 @@ import { useDispatch } from 'react-redux';
 import { authorFilter, categoryFilter } from '../redux/filters/actions';
 
 const BlogItem = ({blog}) => {
-
     const dispatch = useDispatch();
 
     const filterByAuthor = (author) => {
@@ -46,6 +45,7 @@ const BlogItem = ({blog}) => {
                             className="h-10 w-10 rounded-full cursor-pointer"
                             src={authorImg}
                             alt=""
+                            onClick={(e) => filterByAuthor(e.target.parentNode.parentNode.lastChild.firstChild.innerText)}
                         />
                     </div>
                     <div className="ml-3">

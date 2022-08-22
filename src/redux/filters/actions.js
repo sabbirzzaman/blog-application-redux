@@ -1,4 +1,11 @@
-import { AUTHOR_FILTER, CATEGORY_FILTER, DELETE_FILTER_A, DELETE_FILTER_C, RESET_FILTER } from "./actionTypes"
+import { AUTHOR_FILTER, CATEGORY_FILTER, DELETE_FILTER_A, DELETE_FILTER_C, RESET_FILTER, SEARCH } from "./actionTypes"
+
+export const searchBlog = (value) => {
+    return {
+        type: SEARCH,
+        payload: value
+    }
+}
 
 export const authorFilter = (author) => {
     return {
