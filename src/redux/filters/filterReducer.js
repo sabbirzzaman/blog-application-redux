@@ -27,7 +27,7 @@ const filtersReducer = (state = initialState, action) => {
         case RESET_FILTER:
             return {
                 ...state,
-                authorFilter: [],
+                authorFilter: '',
                 categoryFilter: [],
             };
         default:
