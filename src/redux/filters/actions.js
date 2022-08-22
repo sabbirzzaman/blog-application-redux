@@ -36,6 +36,5 @@ export const deleteFilterAuthor = () => {
 export const deleteFilterCategory = (value) => {
     return {
         type: DELETE_FILTER_C,
-        payload: value,
     }
 }

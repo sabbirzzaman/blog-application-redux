@@ -18,16 +18,9 @@ const filtersReducer = (state = initialState, action) => {
         }
 
         case CATEGORY_FILTER: {
-            const isMatched = state.categoryFilter.find(
-                (category) => category === action.payload
-            );
-            if (!isMatched) {
-                return {
-                    ...state,
-                    categoryFilter: [...state.categoryFilter, action.payload],
-                };
-            } else {
-                return state;
+            return {
+                ...state,
+                categoryFilter: action.payload,
             }
         }
 
@@ -40,7 +33,7 @@ const filtersReducer = (state = initialState, action) => {
         case DELETE_FILTER_C:
             return {
                 ...state,
-                categoryFilter: [].filter(item => item !== action.payload),
+                categoryFilter: '',
             };
 
         case RESET_FILTER:

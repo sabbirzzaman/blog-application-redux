@@ -10,7 +10,7 @@ const BlogList = () => {
     const filters = useSelector((state) => state.filters);
 
     const author = filters.authorFilter;
-    const categories = filters.categoryFilter;
+    const category = filters.categoryFilter;
     const searchKey = filters.searchKey;
 
     const searchFilter = (blog) => {
@@ -26,12 +26,8 @@ const BlogList = () => {
     };
 
     const categoryFilter = (blog) => {
-        return categories.length
-            ? categories
-                  .map((category) => {
-                      return category.toLowerCase();
-                  })
-                  .includes(blog.category.toLowerCase())
+        return category
+            ? blog.category.toLowerCase() === category.toLowerCase()
             : blog;
     };
 
