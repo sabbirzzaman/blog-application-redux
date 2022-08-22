@@ -1,15 +1,15 @@
-import { AUTHOR } from "./actionTypes"
+import { AUTHOR_FILTER, CATEGORY_FILTER } from "./actionTypes"
 
-export const addNewAuthor = (author) => {
+export const authorFilter = (author) => {
     return {
-        type: AUTHOR,
-        payload: author,
+        type: AUTHOR_FILTER,
+        payload: author
     }
 }
 
-export const addNewCategory = (category) => {
+export const categoryFilter = (category) => {
     return {
-        type: AUTHOR,
-        payload: category,
+        type: CATEGORY_FILTER,
+        payload: category
     }
 }
