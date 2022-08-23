@@ -7,10 +7,14 @@ const blogReducer = (state = initialState, action) => {
             const date = new Date().toString().split(' ')
             const currentDate = `${date.slice(2, 3)} ${date.slice(1, 2)}, ${date.slice(3, 4)}`;
 
+            const getId = () => {
+                return state.reduce((maxId, blog) => Math.max(blog.id, maxId), 0) + 1
+            }
+
             return [
                 ...state,
                 {
-                    id: 8,
+                    id: getId(),
                     img: action.payload.img,
                     title: action.payload.title,
                     description: action.payload.description,
